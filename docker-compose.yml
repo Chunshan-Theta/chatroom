@@ -12,6 +12,8 @@ services:
             - "./LocalStorage/worker:/app/LocalStorage"
         depends_on:
             - mongo
+        ports:
+            - 5000:5000
 
     mongo:
         image: mongo
