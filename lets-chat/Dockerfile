@@ -1,12 +1,12 @@
-FROM node:stretch-slim
+FROM node:17.2.0
 # ENV NODE_ENV=production
 
 WORKDIR /app
 ADD . /app
 EXPOSE 5000
 
-RUN npm install --production
+RUN npm install
 
-COPY . .
+#COPY . .
 
 CMD [ "npm", "start" ]
