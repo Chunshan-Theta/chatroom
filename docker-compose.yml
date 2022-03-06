@@ -1,5 +1,17 @@
 version: "2"
 services:
+    chat:
+        build:
+            context: ./lets-chat
+            dockerfile: Dockerfile
+        image: lets_chat_image
+        restart: always
+        environment:
+            - task_name=test
+        volumes:
+            - "./LocalStorage/worker:/app/LocalStorage"
+        depends_on:
+            - mongo
 
     mongo:
         image: mongo
