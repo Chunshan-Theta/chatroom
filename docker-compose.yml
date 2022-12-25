@@ -8,22 +8,22 @@ services:
         restart: always
         environment:
             - task_name=test
-        volumes:
-            - "./LocalStorage/worker:/app/LocalStorage"
+        # volumes:
+        #     - "./LocalStorage/worker:/app/LocalStorage"
         depends_on:
             - mongo
         ports:
             - 5000:5000
 
     mongo:
-        image: mongo
+        image: mongo:4.4.15
         restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: wulab
             MONGO_INITDB_ROOT_PASSWORD: wulab
-        volumes:
-            - "./mongo_db_docker/configdb:/data/configdb"
-            - "./mongo_db_docker/db:/data/db"
+        # volumes:
+            # - "./mongo_db_docker/configdb:/data/configdb"
+            # - "./mongo_db_docker/db:/data/db"
 #        ports:
 #            - 27017:27017
     mongo-express:
