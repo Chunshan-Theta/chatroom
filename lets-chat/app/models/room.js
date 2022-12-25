@@ -17,7 +17,7 @@ var RoomSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         unique: true,
-        match: /^[a-z0-9_-]+$/i
+        match: /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/i
     },
     archived: {
         type: Boolean,
@@ -61,7 +61,9 @@ var RoomSchema = new mongoose.Schema({
         type: String,
         required: false//only for password-protected room
     }
-});
+},{
+    usePushEach: true
+  });
 
 RoomSchema.virtual('handle').get(function() {
     return this.slug || this.name.replace(/\W/i, '');
